@@ -43,6 +43,13 @@ class PrintMessagePayload(BaseTxPayload):
 
     message: str
 
+@dataclass(frozen=True)
+class PrintCountPayload(BaseTxPayload):
+    """Payload for the Round."""
+
+    print_count: int
+
+
 
 @dataclass(frozen=True)
 class SelectKeeperPayload(BaseTxPayload):

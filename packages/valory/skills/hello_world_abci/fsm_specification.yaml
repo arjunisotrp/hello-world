@@ -15,13 +15,16 @@ states:
 - RegistrationRound
 - ResetAndPauseRound
 - SelectKeeperRound
+- PrintCountRound
 transition_func:
     (CollectRandomnessRound, DONE): SelectKeeperRound
     (CollectRandomnessRound, NONE): CollectRandomnessRound
     (CollectRandomnessRound, NO_MAJORITY): CollectRandomnessRound
     (CollectRandomnessRound, ROUND_TIMEOUT): CollectRandomnessRound
-    (PrintMessageRound, DONE): ResetAndPauseRound
+    (PrintMessageRound, DONE): PrintCountRound
     (PrintMessageRound, ROUND_TIMEOUT): RegistrationRound
+    (PrintCountRound, DONE): ResetAndPauseRound
+    (PrintCountRound, ROUND_TIMEOUT): RegistrationRound
     (RegistrationRound, DONE): CollectRandomnessRound
     (ResetAndPauseRound, DONE): CollectRandomnessRound
     (ResetAndPauseRound, NO_MAJORITY): RegistrationRound
